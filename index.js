@@ -1,32 +1,13 @@
-import fetch from 'node-fetch';
+const { GraphQLServer } = require('graphql-yoga')
+const fetch = require('node-fetch')
+const baseURL = `https://rest-demo-hyxkwbnhaz.now.sh`;
+const resolvers = {
 
-export default class OntraportService {
-  constructor(config) {
-    this.config = config;
-
-    this.headers = {
-      'Content-Type': 'application/json',
-      'Api-key': this.config.API_KEY,
-      'Api-Appid': this.config.APP_ID
-    };
-    this.base_api_url = 'https://api.ontraport.com/';
-  }
-
-  getContactById() {}
-
-  getContactsByIds() {}
-
-  deleteContact() {}
-
-  postContacts() {}
-
-  upsertContacts() {}
-
-  getCampaigns() {}
-
-  postCampaigns() {}
-
-  putCampaigns() {}
-
-  deleteCampaigns() {}
 }
+
+const server = new GraphQLServer({
+  typeDefs: './ontraport_schema.graphql',
+  resolvers,
+})
+
+server.start(() => console.log(`Server is running on http://localhost:4000`))

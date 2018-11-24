@@ -1,0 +1,325 @@
+type Address {
+  address: String!
+  address2: String
+  city: String!
+  country: String!
+  state: String!
+  zip: String!
+}
+
+type Criteria {
+  # [See the Criteria examples below](http://api.ontraport.com/live/#!/Criteria/Examples)
+  condition: String
+  # External fields to include in results
+  externs: String
+  # Array of Group ID for Object type as comma-delimited list
+  group_ids: [String]
+  ids: [String]
+  # Return only these fields in the response
+  listFields: [String]
+  objectID: Int!
+  # Number of results to return (maximum=50)
+  range: Int
+  # Search Objects for this string
+  search: String
+  # Boolean flag to additionally search Object Notes for the Search term given in Search parameter
+  searchNotes: String
+  # Field used to sort results
+  sort: String
+  # Sort direction, must be used in conjunction with <b>sort</b> parameter.
+  sortDir: String
+  # Return results starting at this offset
+  start: Int
+}
+
+type FieldeditorField {
+  alias: String!
+  options: FieldeditorOptions!
+  required: Int!
+  type: String!
+  unique: Int!
+}
+
+type FieldeditorOptions {
+  add: [String]!
+  remove: [String]!
+  replace: [String]!
+}
+
+type ObjectFieldeditor {
+  description: String
+  fields: [String]
+  name: String
+  objectID: Int!
+}
+
+type ObjectPost {
+  # Email address for the Object.
+  email: String
+  # First name for the Object.
+  firstname: String
+  # Last name for the Object.
+  lastname: String
+  objectID: Int!
+}
+
+type ObjectPut {
+  # Email address for the Object.
+  email: String
+  # First name for the Object.
+  firstname: String
+  id: Int!
+  # Last name for the Object.
+  lastname: String
+  objectID: Int!
+}
+
+type Offer {
+  # Credit Card ID
+  cc_id: Int
+  # Credit card expiration date.
+  ccExpirationDate: String
+  # Days to delay start of offer.
+  delay: Int
+  # Total amount of sale.
+  grandTotal: Float
+  # Are there shipping charges?
+  hasShipping: Boolean
+  # Are there applicable taxes?
+  hasTaxes: Boolean
+  products: [Product]!
+  # If the transaction is a subscription, should an invoice be sent with every recurring order?
+  send_recurring_invoice: Boolean
+  # Shipping amount.
+  shipping: [Shipping]
+  # Add shipping charge to reoccurring orders?
+  shipping_charge_reoccurring_orders: Boolean
+  # Subtotal.
+  subTotal: Float
+  taxes: [Tax]
+}
+
+type Order {
+  # Affiliate ID.
+  affiliate_id: Int
+  billing_address: Address
+  chargeNow: String
+  contact_id: Int!
+  # Gateway ID.
+  gateway_id: Int
+  # Invoice template ID.
+  invoice_template: Int
+  objectID: Int!
+  offer: OrderOffer
+  payer: Payer
+}
+
+type OrderOffer {
+  # Credit Card ID
+  cc_id: Int
+  # Credit card expiration date.
+  ccExpirationDate: String
+  # Days to delay start of offer.
+  delay: Int
+  # Total amount of sale.
+  grandTotal: Float
+  # Are there shipping charges?
+  hasShipping: Boolean
+  # Are there applicable taxes?
+  hasTaxes: Boolean
+  # Offer ID
+  offer_id: Int!
+  # Order ID
+  order_id: Int!
+  products: [Product]!
+  # Shipping amount.
+  shipping: [Shipping]
+  # Add shipping charge to reoccurring orders?
+  shipping_charge_reoccurring_orders: Boolean
+  # Subtotal.
+  subTotal: Float
+  taxes: [Tax]
+}
+
+type Payer {
+  ccnumber: String!
+  # CVV code.
+  code: String!
+  # Expiration month (1-12).
+  expire_month: Int
+  # Expiration year (four-digit year, e.g. 2018).
+  expire_year: Int
+}
+
+type Price {
+  id: Int!
+  payment_count: Int!
+  price: Float!
+  unit: String!
+}
+
+type Product {
+  # Days to delay start.
+  delay_start: Int
+  # This must be an existing Product ID.
+  id: Int
+  # Partner Level 1 commission percentage.
+  level1: Float
+  # Partner Level 2 commission percentage.
+  level2: Float
+  # Is this offered to Partners (affiliates)?
+  offer_to_affiliates: Boolean
+  # Product owner (Staff ID).
+  owner: Int
+  price: [Price]!
+  # How many of this product are being purchased?
+  quantity: Int!
+  # One-time setup fee.
+  setup_fee: Float
+  # Date to charge setup fee (when setup_fee_when is "on_date").
+  setup_fee_date: String
+  # When should setup fee be applied?
+  setup_fee_when: String
+  # Does this product have an associated shipping cost?
+  shipping: Boolean
+  subscription_count: Int
+  subscription_fee: Float
+  subscription_unit: String
+  # Is this product taxable?
+  tax: Boolean
+  # Is this item taxable?
+  taxable: Boolean
+  # What is the total amount of this sale?
+  total: Float!
+  # Length of trial period (also set trial_period_units).
+  trial_period_count: Int
+  # Units describing length of trial period.
+  trial_period_unit: String
+  # Price during trial period.
+  trial_price: Float
+  type: String
+}
+
+type Response {
+  account_id: Int!
+  code: Int!
+  data: Data!
+}
+
+type Shipping {
+  form_id: Int
+  # ID of the Shipping Method to apply. This must be an existing Shipping Method.
+  id: Int!
+  name: String
+  price: Float
+}
+
+type TagByNameParams {
+  # Array of Tag names to add to object
+  add_names: [String]!
+  # [See the Criteria examples below](http://api.ontraport.com/live/#!/Criteria/Examples)
+  condition: String
+  # Array of Group IDs for Object type
+  group_ids: [String]
+  # Array of Object IDs to add tags to
+  ids: [String]!
+  objectID: Int!
+  # 50
+  range: Int
+  search: String
+  start: Int
+}
+
+type TaskAssignParams {
+  # Array of Group ID for Object type as comma-delimited list
+  group_ids: [String]
+  # List of Contact IDs
+  ids: [String]!
+  message: TaskMessage
+  object_type_id: Int!
+}
+
+type TaskCompleteParams {
+  data: TaskData!
+  # Array of Group ID for Object type as comma-delimited list
+  group_ids: [String]
+  ids: [String]!
+  object_type_id: Int!
+}
+
+type TaskData {
+  followup: TaskFollowup!
+  # Task outcome name. This must start with ":=" For example, <strong>":=signed"</strong>.
+  outcome: String!
+  # These fields can be used to update associated Object data when completing a task. For example, set <strong>task_form_title</strong> to "New title" to change the Contact's title.
+  task_form_data: String!
+}
+
+type TaskFollowup {
+  # Due date of new Task, given as number of days from current date.
+  due_date: Int!
+  # Message ID of new Task to be created for further followup. This Task must currently exist. New tasks can be created using the <a href="http://api.ontraport.com/live/#!/objects/createObject">Objects Create endpoint</a> with objectID=1.
+  message_id: Int!
+  # New Task assignee.
+  task_owner: Int!
+}
+
+type TaskMessage {
+  # Number of days until this task is due
+  due_date: Int!
+  # Task Message ID to assign
+  id: Int!
+  task_owner: Int!
+  # Task
+  type: String!
+}
+
+type TaskRescheduleParams {
+  # Task ID
+  id: Int!
+  newtime: Int
+}
+
+type Tax {
+  form_id: Int
+  # ID of the Tax to apply. This must be an existing Tax type.
+  id: Int!
+  name: String
+  rate: Float
+  taxShipping: Boolean
+  taxTotal: Float
+}
+
+type Transaction {
+  billing_address: Address
+  # Credit Card ID to use for this Transaction. This can be used instead of Payer.
+  cc_id: Int
+  # Charge Transaction now or or just log a Transaction.
+  chargeNow: String!
+  # Create new Transaction for this Object instance (Contact ID).
+  contact_id: Int!
+  # Gateway ID to use for this Transaction.
+  gateway_id: Int!
+  # Invoice ID to use for this Transaction.
+  invoice_template: Int!
+  offer: Offer!
+  payer: Payer
+  # Timestamp (in milliseconds since midnight 1/1/1970) of the Transaction.
+  trans_date: Int
+}
+
+type UntagByNameParams {
+  # [See the Criteria examples below](http://api.ontraport.com/live/#!/Criteria/Examples)
+  condition: String
+  # Array of Group IDs for Object type
+  group_ids: [String]
+  # Array of Object IDs to remove tags from
+  ids: [String]!
+  objectID: Int!
+  # 50
+  range: Int
+  # Array of Tag names to remove from object
+  remove_names: [String]!
+  search: String
+  start: Int
+}
