@@ -1,0 +1,41 @@
+{
+  "name": "ontrajs",
+  "version": "1.0.0",
+  "description": "A ontraport cli to scaffold graphql wrapper or rest wrapper for ontraport.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "clear": "^0.1.0",
+    "clui": "^0.3.6",
+    "configstore": "^4.0.0",
+    "figlet": "^1.2.1",
+    "graphql-yoga": "^1.16.7",
+    "inquirer": "^6.2.1",
+    "minimist": "^1.2.0",
+    "node-fetch": "^2.3.0",
+    "touch": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dashcraft/OntraJs.git"
+  },
+  "keywords": [
+    "Ontraport",
+    "Graphql",
+    "REST",
+    "CLI"
+  ],
+  "author": "Daniel Ashcraft",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dashcraft/OntraJs/issues"
+  },
+  "homepage": "https://github.com/dashcraft/OntraJs#readme"
+}
