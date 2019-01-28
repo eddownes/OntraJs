@@ -12,16 +12,46 @@ console.log(
     figlet.textSync('Ontra-Js', { horizontalLayout: 'full' })
   )
 );
+console.log('after clear')
 
 if (files.directoryExists('./server')) {
   console.log(chalk.red('Server has already been created, run update instead!'));
   process.exit();
 }
-
+console.log('server didnt exist')
 const run = async () => {
-  const credentials = await inquirer.askOntraportCredentials();
-
+  console.log('inside ontraport credentials');
+  const questions = [
+    {
+      name: 'app_id',
+      type: 'input',
+      message: 'Enter your Ontraport APP ID:',
+      validate: function( value ) {
+        if (value.length) {
+          return true;
+        } else {
+          return 'Please enter your Ontraport APP ID.';
+        }
+      }
+    },
+    {
+      name: 'api_key',
+      type: 'password',
+      message: 'Enter your Ontraport API Key:',
+      validate: function(value) {
+        if (value.length) {
+          return true;
+        } else {
+          return 'Please enter your Ontraport API Key';
+        }
+      }
+    }
+  ];
+  console.log('after ontraport uploaded questions')
+  let credentials = inquirer.prompt(questions);
+  console.log('running credentials')
   let str = [`API_KEY = "${credentials.api_key}"`, `APP_ID = "${credentials.app_id}"`].join('\n')
+  console.log('after getting the info');
   const status = new Spinner('Scaffolding files...');
   status.start();
   fs.writeFile('.env', str, res => {

@@ -9,11 +9,12 @@
   "directories": {
     "lib": "lib"
   },
-  "preferGlobal":true,
+  "preferGlobal": true,
   "dependencies": {
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
     "clui": "^0.3.6",
+    "commander": "^2.19.0",
     "configstore": "^4.0.0",
     "figlet": "^1.2.1",
     "graphql-yoga": "^1.16.7",
