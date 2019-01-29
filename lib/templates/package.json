@@ -1,0 +1,9 @@
+{
+    "version": "1.0.0",
+    "description": "This project was created with OntraJs.",
+    "main": "server.js",
+    "dependencies": {
+      "graphql-yoga": "^1.16.7",
+      "node-fetch": "^2.3.0"
+    }
+  }

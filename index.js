@@ -47,6 +47,8 @@ const run = async () => {
     fs.mkdir(`${appRoot}/services`);
   }
 
+  files.createPackageFile(`${location.replace("\\","/").replace("\n", "")}`,appRoot, `${credentials.appname}`)
+
   const status = new Spinner('Scaffolding files...');
   status.start();
   let createOs = execute('npm root -g', function(location){
