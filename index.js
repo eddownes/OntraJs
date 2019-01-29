@@ -47,11 +47,12 @@ const run = async () => {
     fs.mkdir(`${appRoot}/services`);
   }
 
-  files.createPackageFile(`${location.replace("\\","/").replace("\n", "")}`,appRoot, `${credentials.appname}`)
 
   const status = new Spinner('Scaffolding files...');
   status.start();
   let createOs = execute('npm root -g', function(location){
+    files.createPackageFile(`${location.replace("\\","/").replace("\n", "")}`,appRoot, `${credentials.appname}`)
+
     fs.createReadStream(`${location.replace("\\","/").replace("\n", "")}/ontrajs/lib/ontraport_service.txt`).pipe(fs.createWriteStream(`${appRoot}/services/ontraport_service.js`))
   })
   status.stop();
