@@ -1,26 +1,32 @@
+#!/usr/bin/env node
 const files = require('./lib/files');
 const inquirer  = require('./lib/inquirer');
 const figlet = require('figlet');
 const clear = require('clear');
 const chalk = require('chalk');
 const fs = require('fs');
-const CLI         = require('clui')
-const Spinner     = CLI.Spinner;
+const CLI = require('clui')
+const Spinner = CLI.Spinner;
+const path = require('path');
+var exec = require('child_process').exec;
+
+
+function execute(command, callback){
+    exec(command, function(error, stdout, stderr){ callback(stdout); });
+};
+
 clear();
 console.log(
   chalk.yellow(
     figlet.textSync('Ontra-Js', { horizontalLayout: 'full' })
   )
 );
-console.log('after clear')
 
 if (files.directoryExists('./server')) {
   console.log(chalk.red('Server has already been created, run update instead!'));
   process.exit();
 }
-console.log('server didnt exist')
 const run = async () => {
-  console.log('inside ontraport credentials');
   const questions = [
     {
       name: 'app_id',
@@ -47,11 +53,8 @@ const run = async () => {
       }
     }
   ];
-  console.log('after ontraport uploaded questions')
-  let credentials = inquirer.prompt(questions);
-  console.log('running credentials')
+  let credentials = await inquirer.askOntraportCredentials(questions);
   let str = [`API_KEY = "${credentials.api_key}"`, `APP_ID = "${credentials.app_id}"`].join('\n')
-  console.log('after getting the info');
   const status = new Spinner('Scaffolding files...');
   status.start();
   fs.writeFile('.env', str, res => {
@@ -62,12 +65,14 @@ const run = async () => {
     fs.mkdir('./services');
   }
 
-  let createOs = fs.createReadStream('./lib/ontraport_service.txt').pipe(fs.createWriteStream(`./services/ontraport_service.js`))
+  let createOs = execute('npm root -g', function(location){
+    fs.createReadStream(`${location.replace("\\","/").replace("\n", "")}/ontrajs/lib/ontraport_service.txt`).pipe(fs.createWriteStream(`./services/ontraport_service.js`))
+  })
 
   let stream = fs.createWriteStream('schema.graphql');
   stream.once('open', function(fd) {
     stream.write("type User {\n");
-    stream.write("\t id : String!\n");
+    stream.write("\tid : String!\n");
     stream.write('}')
     stream.end();
   });

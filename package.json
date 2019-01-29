@@ -4,7 +4,7 @@
   "description": "A ontraport cli to scaffold graphql wrapper or rest wrapper for ontraport.",
   "main": "index.js",
   "bin": {
-    "ontrajs": "bin/outside"
+    "ontrajs": "./index.js"
   },
   "directories": {
     "lib": "lib"
