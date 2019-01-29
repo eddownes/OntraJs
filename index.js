@@ -46,7 +46,7 @@ const run = async () => {
   if(!files.directoryExists('./services')){
     fs.mkdir(`${appRoot}/services`);
   }
-
+ 
 
   const status = new Spinner('Scaffolding files...');
   status.start();
