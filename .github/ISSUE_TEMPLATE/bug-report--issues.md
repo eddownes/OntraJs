@@ -1,9 +1,8 @@
 ---
-
 title: 'Bug Report:'
 labels: bug
 about: Reporting issue with a specific piece of code.
-assignees: dashcraft
+---
 
 <!--
 NOTE: If you're reporting a security issue, don't create a GitHub issue. Instead, email  daniel.ashcraft@ofashandfire.com. We will look into it immediately.
