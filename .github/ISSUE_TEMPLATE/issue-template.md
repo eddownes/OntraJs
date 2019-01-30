@@ -1,9 +1,9 @@
 ---
-name: 
+name: Issue Template
 about: Reporting issue with a specific piece of code.
 title: 'Bug Report:'
 labels: bug
-assignees: 
+assignees: ''
 
 ---
 
