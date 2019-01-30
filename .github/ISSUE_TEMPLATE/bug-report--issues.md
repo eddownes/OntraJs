@@ -1,5 +1,5 @@
 ---
-title: 'Bug Report:'
+title: "Bug Report:"
 labels: bug
 about: Reporting issue with a specific piece of code.
 ---
