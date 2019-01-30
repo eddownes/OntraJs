@@ -31,7 +31,9 @@ const run = async () => {
   let str = [`API_KEY = "${credentials.api_key}"`, `APP_ID = "${credentials.app_id}"`].join('\n')
   
   if(!files.directoryExists(`${credentials.appname}`)){
-    fs.mkdir(`./${credentials.appname}`);
+    fs.mkdir(`./${credentials.appname}`, function(err){
+      console.error(new Error(err));
+    });
   } else {
     console.log(chalk.red('App Directory Already Exists!'));
     process.exit();
