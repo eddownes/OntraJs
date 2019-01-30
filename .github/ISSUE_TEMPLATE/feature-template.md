@@ -1,16 +1,10 @@
 ---
 name: Feature Template
 about: Reporting issue with a specific piece of code.
-title: 'Bug Report:'
+title: Feature Template
 labels: feature
-assignees: ''
-
----
-
----
-name: Feature: Name a feature.
-about: Describe the feature.
 assignees: dashcraft
+
 ---
 
 **Describe your feature**
