@@ -1,0 +1,21 @@
+{
+  "text": "String!",
+  "email": "String!",
+  "state": "String!",
+  "fulldate": "DateTime!",
+  "subscription": "Boolean!",
+  "check": "Boolean!",
+  "phone": "String!",
+  "url": "String!",
+  "country": "String!",
+  "timestamp": "DateTime",
+  "price": "String!",
+  "parent": null,
+  "numeric": "Int!",
+  "drop": null,
+  "mergefield": "String!",
+  "sms": "String!",
+  "timezone": null,
+  "list": null,
+  "longtext": "String!"
+}
