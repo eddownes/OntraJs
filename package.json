@@ -29,13 +29,13 @@
   },
   "jest": {
     "coverageReporters": [
-      "json-summary", 
+      "json-summary",
       "text",
       "lcov"
     ]
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose",
     "test:coverage": "npm test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges"
   },
