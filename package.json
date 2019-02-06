@@ -43,7 +43,7 @@
     "test": "jest --verbose",
     "test:coverage": "npm test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges",
-    "lint": "eslint"
+    "lint": "eslint."
   },
   "repository": {
     "type": "git",
